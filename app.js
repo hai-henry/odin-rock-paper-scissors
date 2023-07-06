@@ -1,3 +1,14 @@
+let playerScore = 0;
+let computerScore = 0;
+let draw = 0;
+let playerSelection = "Rock";
+
+console.log(game());
+console.log("Player Score: " + playerScore);
+console.log("Computer Score: " + computerScore);
+console.log("Draw: " + draw);
+console.log(results(playerScore, computerScore));
+
 // gets computer choice
 function getComputerChoice() {
 	// create an array of choices
@@ -9,7 +20,8 @@ function getComputerChoice() {
 }
 
 // plays round, compares selection
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
+	let computerSelection = getComputerChoice();
 	// selection
 	const rock = "ROCK";
 	const paper = "PAPER";
@@ -17,39 +29,56 @@ function playRound(playerSelection, computerSelection) {
 
 	if (playerSelection.toUpperCase() === rock) {
 		if (computerSelection.toUpperCase() === rock) {
-			return "It's a Tie! Rock can not beat Rock";
+			console.log("It's a Tie! Rock can not beat Rock");
+			return (draw += 1);
 		}
 		if (computerSelection.toUpperCase() === paper) {
-			return "You Lose! Paper beats Rock";
+			console.log("You Lose! Paper beats Rock");
+			return (computerScore += 1);
 		}
 		if (computerSelection.toUpperCase() === scissors) {
-			return "You Win! Rock beats Scissors";
+			console.log("You Win! Rock beats Scissors");
+			return (playerScore += 1);
 		}
 	} else if (playerSelection.toUpperCase() === paper) {
 		if (computerSelection.toUpperCase() === rock) {
-			return "You win! Paper beats Rock";
+			console.log("You win! Paper beats Rock");
+			return (playerScore += 1);
 		}
 		if (computerSelection.toUpperCase() === paper) {
-			return "It's a tie! Paper can not beat Paper";
+			console.log("It's a tie! Paper can not beat Paper");
+			return (draw += 1);
 		}
 		if (computerSelection.toUpperCase() === scissors) {
-			return "You lose! Scissors beats paper";
+			console.log("You lose! Scissors beats paper");
+			return (computerScore += 1);
 		}
 	} else if (playerSelection.toUpperCase() === scissors) {
 		if (computerSelection.toUpperCase() === rock) {
-			return "You lose! Rock beats Scissors";
+			console.log("You lose! Rock beats Scissors");
+			return (computerScore += 1);
 		}
 		if (computerSelection.toUpperCase() === paper) {
-			return "You Win! Scissors beats paper";
+			console.log("You Win! Scissors beats paper");
+			return (playerScore += 1);
 		}
 		if (computerSelection.toUpperCase() === scissors) {
-			return "It's a tie! Scissors can not beat Scissors";
+			console.log("It's a tie! Scissors can not beat Scissors");
+			return (draw += 1);
 		}
 	}
 }
 
-const playerSelection = "Paper";
-const computerSelection = getComputerChoice();
-console.log(playerSelection);
-console.log(computerSelection);
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+	for (let i = 0; i < 5; ++i) {
+		playRound(playerSelection);
+	}
+}
+
+function results(playerScore, computerScore) {
+	if (playerScore > computerScore) {
+		return "You win!";
+	} else {
+		return "You lose!";
+	}
+}
