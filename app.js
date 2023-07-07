@@ -1,7 +1,6 @@
 let playerScore = 0;
 let computerScore = 0;
 let draw = 0;
-let playerSelection = "Rock";
 
 console.log(game());
 console.log("Player Score: " + playerScore);
@@ -20,7 +19,8 @@ function getComputerChoice() {
 }
 
 // plays round, compares selection
-function playRound(playerSelection) {
+function playRound() {
+	let playerSelection = prompt("What do you choose?");
 	let computerSelection = getComputerChoice();
 	// selection
 	const rock = "ROCK";
@@ -69,12 +69,14 @@ function playRound(playerSelection) {
 	}
 }
 
+// function to play a 5 round game
 function game() {
 	for (let i = 0; i < 5; ++i) {
-		playRound(playerSelection);
+		playRound();
 	}
 }
 
+// calculate the winner/loser
 function results(playerScore, computerScore) {
 	if (playerScore > computerScore) {
 		return "You win!";
