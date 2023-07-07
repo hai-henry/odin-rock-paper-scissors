@@ -20,7 +20,9 @@ function getComputerChoice() {
 
 // plays round, compares selection
 function playRound() {
+	// get user input
 	let playerSelection = prompt("What do you choose?");
+	// generate computer choice
 	let computerSelection = getComputerChoice();
 	// selection
 	const rock = "ROCK";
