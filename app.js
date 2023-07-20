@@ -2,11 +2,11 @@ let playerScore = 0;
 let computerScore = 0;
 let draw = 0;
 
-console.log(game());
-console.log("Player Score: " + playerScore);
-console.log("Computer Score: " + computerScore);
-console.log("Draw: " + draw);
-console.log(results(playerScore, computerScore));
+//console.log(game());
+// console.log("Player Score: " + playerScore);
+// console.log("Computer Score: " + computerScore);
+// console.log("Draw: " + draw);
+// console.log(results(playerScore, computerScore));
 
 // gets computer choice
 function getComputerChoice() {
@@ -21,7 +21,7 @@ function getComputerChoice() {
 // plays round, compares selection
 function playRound() {
 	// get user input
-	let playerSelection = prompt("What do you choose?");
+	// let playerSelection = prompt("What do you choose?");
 	// generate computer choice
 	let computerSelection = getComputerChoice();
 	// selection
