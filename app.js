@@ -2,11 +2,18 @@ let playerScore = 0;
 let computerScore = 0;
 let draw = 0;
 
-//console.log(game());
-// console.log("Player Score: " + playerScore);
-// console.log("Computer Score: " + computerScore);
-// console.log("Draw: " + draw);
-// console.log(results(playerScore, computerScore));
+let rock = document.querySelector("#btn1");
+rock.addEventListener("click", () => {
+	playRound("ROCK");
+});
+let paper = document.querySelector("#btn2");
+paper.addEventListener("click", () => {
+	playRound("PAPER");
+});
+let scissors = document.querySelector("#btn3");
+scissors.addEventListener("click", () => {
+	playRound("SCISSORS");
+});
 
 // gets computer choice
 function getComputerChoice() {
@@ -19,11 +26,14 @@ function getComputerChoice() {
 }
 
 // plays round, compares selection
-function playRound() {
+function playRound(selection) {
 	// get user input
-	// let playerSelection = prompt("What do you choose?");
+	let playerSelection = selection;
+	console.log(playerSelection);
 	// generate computer choice
 	let computerSelection = getComputerChoice();
+	console.log(computerSelection);
+
 	// selection
 	const rock = "ROCK";
 	const paper = "PAPER";
