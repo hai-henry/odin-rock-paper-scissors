@@ -19,7 +19,6 @@ selections.forEach((selection) => {
 	selection.addEventListener("click", (e) => {
 		playRound(e.target.id);
 		runningScore(playerScore, computerScore, draw);
-		resetGame();
 	});
 });
 
