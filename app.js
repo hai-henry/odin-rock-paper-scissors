@@ -7,8 +7,7 @@ const resultsDiv = document.createElement("p");
 const playerSelectionDiv = document.createElement("p");
 const computerSelectionDiv = document.createElement("p");
 const scoreDiv = document.createElement("p");
-scoreDiv.textContent =
-	"Player: " + playerScore + " Computer: " + computerScore + " Draw: " + draw;
+
 container.appendChild(scoreDiv);
 container.appendChild(playerSelectionDiv);
 container.appendChild(computerSelectionDiv);
@@ -19,6 +18,8 @@ const selections = document.querySelectorAll(".selection");
 selections.forEach((selection) => {
 	selection.addEventListener("click", (e) => {
 		playRound(e.target.id);
+		runningScore(playerScore, computerScore, draw);
+		resetGame();
 	});
 });
 
@@ -86,18 +87,18 @@ function playRound(selection) {
 	}
 }
 
-// function to play a 5 round game
-function game() {
-	for (let i = 0; i < 5; ++i) {
-		playRound();
-	}
+function runningScore(playerScore, computerScore, draw) {
+	scoreDiv.textContent =
+		"Player: " + playerScore + " Computer: " + computerScore + " Draw: " + draw;
+	results(playerScore, computerScore, draw);
 }
 
 // calculate the winner/loser
 function results(playerScore, computerScore) {
-	if (playerScore > computerScore) {
-		return "You win!";
-	} else {
-		return "You lose!";
+	if (playerScore === 5) {
+		alert("You win the game!");
+	}
+	if (computerScore === 5) {
+		alert("You lose the game!");
 	}
 }
