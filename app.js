@@ -2,6 +2,18 @@ let playerScore = 0;
 let computerScore = 0;
 let draw = 0;
 
+const container = document.querySelector(".body-content");
+const resultsDiv = document.createElement("p");
+const playerSelectionDiv = document.createElement("p");
+const computerSelectionDiv = document.createElement("p");
+const scoreDiv = document.createElement("p");
+scoreDiv.textContent =
+	"Player: " + playerScore + " Computer: " + computerScore + " Draw: " + draw;
+container.appendChild(scoreDiv);
+container.appendChild(playerSelectionDiv);
+container.appendChild(computerSelectionDiv);
+container.appendChild(resultsDiv);
+
 // play game using buttons
 const selections = document.querySelectorAll(".selection");
 selections.forEach((selection) => {
@@ -10,7 +22,7 @@ selections.forEach((selection) => {
 	});
 });
 
-// gets computer choice
+// gets computer choices
 function getComputerChoice() {
 	// create an array of choices
 	const choices = ["Rock", "Paper", "Scissors"];
@@ -24,50 +36,51 @@ function getComputerChoice() {
 function playRound(selection) {
 	// get user input
 	let playerSelection = selection;
-	console.log(
-		playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
-	);
+	playerSelectionDiv.textContent =
+		"You selected: " +
+		playerSelection.charAt(0).toUpperCase() +
+		playerSelection.slice(1);
 	// generate computer choice
 	let computerSelection = getComputerChoice();
-	console.log(computerSelection);
+	computerSelectionDiv.textContent = "Computer selected: " + computerSelection;
 
 	if (playerSelection.toUpperCase() === "ROCK") {
 		if (computerSelection.toUpperCase() === "ROCK") {
-			console.log("It's a Tie! Rock can not beat Rock");
+			resultsDiv.textContent = "It's a Tie! Rock can not beat Rock";
 			return (draw += 1);
 		}
 		if (computerSelection.toUpperCase() === "PAPER") {
-			console.log("You Lose! Paper beats Rock");
+			resultsDiv.textContent = "You Lose! Paper beats Rock";
 			return (computerScore += 1);
 		}
 		if (computerSelection.toUpperCase() === "SCISSORS") {
-			console.log("You Win! Rock beats Scissors");
+			resultsDiv.textContent = "You Win! Rock beats Scissors";
 			return (playerScore += 1);
 		}
 	} else if (playerSelection.toUpperCase() === "PAPER") {
 		if (computerSelection.toUpperCase() === "ROCK") {
-			console.log("You win! Paper beats Rock");
+			resultsDiv.textContent = "You win! Paper beats Rock";
 			return (playerScore += 1);
 		}
 		if (computerSelection.toUpperCase() === "PAPER") {
-			console.log("It's a tie! Paper can not beat Paper");
+			resultsDiv.textContent = "It's a tie! Paper can not beat Paper";
 			return (draw += 1);
 		}
 		if (computerSelection.toUpperCase() === "SCISSORS") {
-			console.log("You lose! Scissors beats paper");
+			resultsDiv.textContent = "You lose! Scissors beats paper";
 			return (computerScore += 1);
 		}
 	} else if (playerSelection.toUpperCase() === "SCISSORS") {
 		if (computerSelection.toUpperCase() === "ROCK") {
-			console.log("You lose! Rock beats Scissors");
+			resultsDiv.textContent = "You lose! Rock beats Scissors";
 			return (computerScore += 1);
 		}
 		if (computerSelection.toUpperCase() === "PAPER") {
-			console.log("You Win! Scissors beats paper");
+			resultsDiv.textContent = "You Win! Scissors beats paper";
 			return (playerScore += 1);
 		}
 		if (computerSelection.toUpperCase() === "SCISSORS") {
-			console.log("It's a tie! Scissors can not beat Scissors");
+			resultsDiv.textContent = "It's a tie! Scissors can not beat Scissors";
 			return (draw += 1);
 		}
 	}
